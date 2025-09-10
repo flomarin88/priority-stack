@@ -392,7 +392,7 @@
         margin-top: var(--space-7);
       }
 
-      /* Lisibilité des paragraphes “denses” (optionnel) 
+      /* Lisibilité des paragraphes "dense"” (optionnel) 
    Active en mettant <body class="prose"> */
       body.prose p,
       body.prose li {
@@ -412,6 +412,9 @@
         }
         .cta .btn-row {
           gap: var(--space-2);
+        }
+        .price-line {
+          font-size: 1.4rem;
         }
       }
 
@@ -444,6 +447,17 @@
       }
       .accordion p {
         margin: 8px 0 0;
+      }
+      .price-line {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin: 4px 0 2px;
+        line-height: 1;
+      }
+      .price-line .muted {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--muted);
       }
     </style>
   </head>
@@ -489,7 +503,7 @@
           <ul>
             <li>Un seul calendrier partagé (pro/perso/famille)</li>
             <li>Rituels de planification : 15' le vendredi + 10' le lundi</li>
-            <li>Blocs “priorités” visibles avant les demandes externes</li>
+            <li>Blocs "prior"tés” visibles avant les demandes externes</li>
           </ul>
           <p>
             <strong>🏅 Bénéfices</strong> : moins d'imprévus, arbitrages
@@ -516,7 +530,7 @@
           </p>
           <ul>
             <li>
-              3-4 créneaux “verrouillés” / semaine (midi + matin week-end)
+              3-4 créneaux "verro"illés” / semaine (midi + matin week-end)
             </li>
             <li>Cycle charge → récup → pic + <em>plan B</em> systématique</li>
             <li>Auto-reschedule en cas d'imprévu</li>
@@ -547,7 +561,7 @@
           </p>
           <ul>
             <li>
-              Week-end “famille first” : tôt le matin + siestes + activités
+              Week-end "famil"e first” : tôt le matin + siestes + activités
               enfants
             </li>
             <li>Soirs disponibles = présence + qualité</li>
@@ -726,10 +740,13 @@
 
     <section id="cta" class="cta">
       <div class="badge">📌 Et maintenant ?</div>
-      <p>Cette méthode est la base. Ton agenda est unique.</p>
       <p>
-        En <strong>60 minutes de coaching 1:1</strong>, on cartographie ton
-        temps, verrouille tes créneaux et on crée ton plan d'entraînement.
+        <strong>Coaching 1:1</strong> pour adapter la méthode à ton agenda, car
+        il est unique.
+      </p>
+
+      <p class="price-line">
+        <strong>200€</strong> <span class="muted">/ 60 min</span>
       </p>
 
       <div class="btn-row">
@@ -747,6 +764,27 @@
           rel="noopener"
           >M'écrire en DM</a
         >
+      </div>
+    </section>
+
+    <section id="deliverables">
+      <div class="badge">🎁 Livrables - 60 min de coaching</div>
+      <div class="callout">
+        <div class="icon">🧾</div>
+        <div>
+          <ul>
+            <li>
+              Définition de tes <strong>objectifs</strong> et de tes
+              <strong>priorités</strong>
+            </li>
+            <li>
+              <strong>Cartographie</strong> de ton agenda (pro / perso /
+              famille)
+            </li>
+            <li><strong>Agenda partagé</strong> avec ton/ta conjoint(e)</li>
+            <li>Créneaux <strong>"Sport"</strong> bloqués (non négociables)</li>
+          </ul>
+        </div>
       </div>
     </section>
 
