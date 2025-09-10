@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Priority Stack - Performer sans sacrifier l'essentiel</title>
+    <meta
+      property="og:title"
+      content="Priority Stack - Performer sans sacrifier l'essentiel"
+    />
+    <meta
+      property="og:description"
+      content="La méthode en 3 piliers pour intégrer ~9h de sport dans un agenda de manager/dirigeant."
+    />
+    <meta property="og:type" content="article" />
+    <link rel="me" href="https://www.instagram.com/florian_tech_tri/" />
+    <link rel="me" href="https://www.linkedin.com/in/florian-marin/" />
+    <meta
+      property="og:see_also"
+      content="https://www.instagram.com/florian_tech_tri/"
+    />
+
+    <style>
+      :root {
+        --bg: #ffffff;
+        --text: #1c1c1c;
+        --muted: #555;
+        --accent: #f29f05; /* Orange */
+        --accent2: #ffcf00; /* Jaune */
+        --pill: #fef3e6;
+        --border: #eee;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 16px;
+      }
+      body {
+        margin: 0;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.6;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        padding: 0 18px 48px;
+        max-width: 860px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* -------- Header (Flex) -------- */
+      header {
+        margin: 24px 0 28px;
+        padding: 32px 20px;
+        border-radius: 20px;
+        background: linear-gradient(
+          135deg,
+          var(--accent) 0%,
+          var(--accent2) 100%
+        );
+        color: #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        text-align: center;
+      }
+      header h1,
+      header h3 {
+        margin: 0;
+      }
+      header h1 {
+        font-size: 2rem;
+        letter-spacing: 0.2px;
+      }
+      header h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        opacity: 0.9;
+      }
+
+      /* -------- Sections -------- */
+      section {
+        margin: 28px 0;
+      }
+      h2 {
+        font-size: 1.25rem;
+        margin: 0 0 10px;
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 6px;
+      }
+      p {
+        margin: 10px 0;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* -------- Callout (Flex) -------- */
+      .callout {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+        background: var(--pill);
+        border: 1px solid var(--accent);
+        border-radius: 14px;
+        margin: 12px 0;
+      }
+      .callout .icon {
+        flex: 0 0 auto;
+        font-size: 1.2rem;
+        line-height: 1;
+        margin-top: 2px;
+      }
+      .callout > div {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      /* IMPORTANT : strong inline (ne force plus le retour à la ligne) */
+      strong {
+        font-weight: 700;
+        display: inline;
+      }
+      .callout strong {
+        display: inline;
+      }
+
+      /* -------- Lists -------- */
+      ul {
+        padding-left: 22px;
+        margin: 10px 0;
+      }
+      .callout ul li {
+        margin: 8px 0;
+      } /* +4px de respiration mobile */
+      .resultats li {
+        margin: 6px 0;
+      }
+
+      /* -------- Checklist (Flex) -------- */
+      .checklist {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .checklist li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #fff;
+      }
+      .checklist li label {
+        flex: 1 1 auto;
+        cursor: pointer;
+      }
+      .checklist input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--accent);
+        flex: 0 0 auto;
+      }
+
+      /* -------- Tools (chips en Flex) -------- */
+      .tools {
+        margin-top: 10px;
+      }
+      .tools-title {
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+      }
+      .toolchips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .toolchip {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--pill);
+        border: 1px solid var(--accent);
+        font-size: 0.85rem;
+        line-height: 1;
+      }
+
+      /* -------- CTA (Flex colonne) -------- */
+      .cta {
+        border: 2px dashed var(--accent);
+        border-radius: 16px;
+        padding: 16px;
+        background: #fffdfa;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .badge {
+        align-self: flex-start;
+        display: inline-flex;
+        background: #000;
+        color: #fff;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+        letter-spacing: 0.2px;
+      }
+
+      /* -------- Footer -------- */
+      footer {
+        margin-top: 28px;
+        color: var(--muted);
+        font-weight: 600;
+        text-align: center;
+      }
+
+      /* -------- Buttons (si utilisés) -------- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border-radius: 10px;
+        background: var(--accent);
+        color: #000;
+        font-weight: 700;
+        text-decoration: none;
+        border: 2px solid var(--accent);
+      }
+      .btn:hover {
+        filter: brightness(0.95);
+      }
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border-radius: 10px;
+        background: #fff;
+        color: var(--text);
+        text-decoration: none;
+        border: 2px solid var(--accent);
+      }
+      .btn:focus-visible,
+      .btn-outline:focus-visible {
+        outline: 2px solid #000;
+        outline-offset: 2px;
+      }
+
+      /* Rangée de boutons */
+      .cta .btn-row {
+        display: flex;
+        gap: 10px;
+        align-items: stretch;
+      }
+
+      /* Deux boutons = même largeur + même hauteur */
+      .cta .btn-row .btn,
+      .cta .btn-row .btn-outline {
+        flex: 1 1 0; /* égalise la largeur */
+        min-width: 0; /* autorise le shrink si texte long */
+        text-align: center;
+        white-space: nowrap; /* évite le saut de ligne qui casserait la hauteur */
+        padding: 12px 16px; /* identique pour les deux */
+      }
+
+      /* -------- Mobile tweaks -------- */
+      @media (max-width: 600px) {
+        body {
+          font-size: 16px;
+        }
+        h2 {
+          font-size: 1.15rem;
+        }
+        .callout {
+          padding: 12px;
+        }
+        .callout .icon {
+          font-size: 1.1rem;
+        }
+        .tools-title {
+          font-size: 0.9rem;
+        }
+        .toolchip {
+          font-size: 0.85rem;
+          padding: 4px 9px;
+        }
+        .cta .btn-row {
+          flex-direction: column;
+        }
+        .resultats li {
+          margin: 8px 0;
+        }
+      }
+
+      /* ============ AERATION GLOBALE (overrides) ============ */
+
+      /* Echelle d'espaces */
+      :root {
+        --space-1: 4px;
+        --space-2: 8px;
+        --space-3: 12px;
+        --space-4: 16px;
+        --space-5: 20px;
+        --space-6: 28px;
+        --space-7: 36px;
+        --space-8: 48px;
+      }
+
+      /* Typo + rythme vertical */
+      body {
+        line-height: 1.7;
+      }
+      h1 {
+        font-size: clamp(1.9rem, 1.2rem + 2.2vw, 2.4rem);
+        text-wrap: balance;
+      }
+      h2 {
+        font-size: clamp(1.125rem, 1rem + 1vw, 1.35rem);
+        text-wrap: balance;
+      }
+
+      section {
+        margin-block: var(--space-7);
+      }
+      section > :first-child {
+        margin-top: 0;
+      }
+      section > :last-child {
+        margin-bottom: 0;
+      }
+
+      /* Aération des blocs clés */
+      header {
+        padding: var(--space-6) var(--space-4);
+        gap: var(--space-2);
+      }
+      .callout {
+        padding: var(--space-4);
+        gap: var(--space-3);
+      }
+      .callout p {
+        line-height: 1.68;
+        margin-block: var(--space-2);
+      }
+      .callout ul {
+        padding-left: 20px;
+      }
+      .callout ul li {
+        margin: var(--space-2) 0;
+      }
+
+      .checklist {
+        gap: var(--space-3);
+      }
+      .checklist li {
+        padding: 12px 14px;
+      }
+
+      .tools {
+        margin-top: var(--space-3);
+      }
+      .toolchips {
+        gap: var(--space-2);
+      }
+
+      .cta {
+        padding: var(--space-5);
+        gap: var(--space-3);
+      }
+      footer,
+      .site-footer {
+        margin-top: var(--space-7);
+      }
+
+      /* Lisibilité des paragraphes “denses” (optionnel) 
+   Active en mettant <body class="prose"> */
+      body.prose p,
+      body.prose li {
+        max-width: 70ch;
+      }
+
+      /* Mobile : confort + respirations supplémentaires */
+      @media (max-width: 600px) {
+        body {
+          font-size: 16px;
+        }
+        .callout {
+          padding: var(--space-3);
+        }
+        .resultats li {
+          margin: var(--space-2) 0;
+        }
+        .cta .btn-row {
+          gap: var(--space-2);
+        }
+      }
+    </style>
+  </head>
+  <body class="prose">
+    <header>
+      <h1>🚀 Priority Stack</h1>
+      <h3>
+        La méthode pour intégrer ~9h de sport dans un agenda de manager /
+        dirigeant.
+      </h3>
+      <footer>🧡 Performer sans sacrifier l'essentiel</footer>
+    </header>
+
+    <section id="mythe">
+      <h2>❌ Le mythe</h2>
+      <p>
+        On pense souvent que pour progresser en triathlon, il faut s'entraîner
+        <strong>15 à 20&nbsp;heures par semaine</strong>. <em>C'est faux.</em>
+      </p>
+      <p>
+        Avec la bonne organisation,
+        <strong>6 à 9&nbsp;heures suffisent</strong> pour performer, tout en
+        restant présent pour sa famille et son travail.
+      </p>
+    </section>
+
+    <section id="solution">
+      <h2>✅ La solution : la méthode Priority Stack</h2>
+      <p>
+        Une méthode simple en <strong>3 piliers</strong> pour intégrer ~9h de
+        sport sans sacrifier l'essentiel.
+      </p>
+
+      <!-- Pilier 1 -->
+      <div class="callout">
+        <div class="icon">🗺️</div>
+        <div>
+          <strong>1️⃣ Clarté totale</strong>
+          <p>
+            <em>Ne subis plus ton agenda.</em> Rassemble pro + perso au même
+            endroit pour décider en conscience.
+          </p>
+          <ul>
+            <li>Un seul calendrier partagé (pro/perso/famille)</li>
+            <li>Rituels de planification : 15' le vendredi + 10' le lundi</li>
+            <li>Blocs “priorités” visibles avant les demandes externes</li>
+          </ul>
+          <p>
+            <strong>🏅 Bénéfices</strong> : moins d'imprévus, arbitrages
+            faciles, énergie mentale préservée.
+          </p>
+          <div class="tools" aria-label="Outils et automatisations">
+            <div class="tools-title">🛠️ Outils</div>
+            <div class="toolchips">
+              <span class="toolchip">Google Agenda</span>
+              <span class="toolchip">Rappels anti-conflits</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pilier 2 -->
+      <div class="callout">
+        <div class="icon">⏱️</div>
+        <div>
+          <strong>2️⃣ Discipline sacrée</strong>
+          <p>
+            Ton entraînement devient un <em>rendez-vous pro</em> avec toi-même :
+            anticipé, non négociable, orienté progrès.
+          </p>
+          <ul>
+            <li>
+              3-4 créneaux “verrouillés” / semaine (midi + matin week-end)
+            </li>
+            <li>Cycle charge → récup → pic + <em>plan B</em> systématique</li>
+            <li>Auto-reschedule en cas d'imprévu</li>
+          </ul>
+          <p>
+            <strong>🏅 Bénéfices</strong> : <strong>régularité</strong>,
+            progression mesurable, sérénité (tu sais <em>quand</em> tu
+            t'entraînes).
+          </p>
+          <div class="tools" aria-label="Outils et automatisations">
+            <div class="tools-title">🛠️ Outils</div>
+            <div class="toolchips">
+              <span class="toolchip">Reclaim.ai</span>
+              <span class="toolchip">Auto-reschedule</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pilier 3 -->
+      <div class="callout">
+        <div class="icon">👨‍👩‍👧‍👦</div>
+        <div>
+          <strong>3️⃣ Énergie durable</strong>
+          <p>
+            La famille est ton <em>socle</em> : tu organises les entraînements
+            autour des moments forts pour recharger… et performer.
+          </p>
+          <ul>
+            <li>
+              Week-end “famille first” : tôt le matin + siestes + activités
+              enfants
+            </li>
+            <li>Soirs disponibles = présence + qualité</li>
+            <li>Rituels récup partagés (repas, sommeil, off screens)</li>
+          </ul>
+          <p>
+            <strong>🏅 Bénéfices</strong> : plus d'énergie, zéro culpabilité,
+            adhésion à la maison.
+          </p>
+          <div class="tools" aria-label="Outils et automatisations">
+            <div class="tools-title">🛠️ Outils</div>
+            <div class="toolchips">
+              <span class="toolchip">Jow</span>
+              <span class="toolchip">Drive (courses)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <span class="badge">📝 Checklist rapide</span>
+      <ul class="checklist">
+        <li>
+          <input type="checkbox" id="c1" />
+          <label for="c1"
+            >Un seul agenda <strong>pro/perso/famille</strong> (couleurs
+            OK)</label
+          >
+        </li>
+        <li>
+          <input type="checkbox" id="c2" />
+          <label for="c2"
+            ><strong>3-4 créneaux Sport</strong> verrouillés / semaine</label
+          >
+        </li>
+        <li>
+          <input type="checkbox" id="c3" />
+          <label for="c3"
+            >Plan B pour chaque séance (pluie/déplacement/enfants)</label
+          >
+        </li>
+        <li>
+          <input type="checkbox" id="c4" />
+          <label for="c4"
+            >Week-end <strong>famille first</strong> (tôt + siestes +
+            activités)</label
+          >
+        </li>
+        <li>
+          <input type="checkbox" id="c5" />
+          <label for="c5"
+            ><strong>Batch Cooking</strong> + retrait Drive programmé</label
+          >
+        </li>
+      </ul>
+      <p>
+        <small
+          >⏱️ Astuce : 15' le vendredi pour préparer la semaine suivante.</small
+        >
+      </p>
+    </section>
+
+    <section id="resultats">
+      <h2>🎯 Résultats (4–6 semaines)</h2>
+      <ul class="resultats">
+        <li>
+          6–9 h de sport/semaine <strong>sans stress ni culpabilité</strong>
+        </li>
+        <li>Soirs disponibles pour la famille <strong>≥ 5/7</strong></li>
+        <li>
+          Conflits d’agenda <strong>rares</strong> (règles + auto-reschedule)
+        </li>
+        <li>Énergie durable : sommeil régulier, alimentation simplifiée</li>
+      </ul>
+
+      <!-- Mini-KPIs réutilisant le style des "chips" outils -->
+      <div class="tools" aria-label="Indicateurs de suivi">
+        <div class="tools-title">📈 3 KPI à suivre</div>
+        <div class="toolchips">
+          <span class="toolchip">Séances honorées ≥ 85%</span>
+          <span class="toolchip">Soirs en famille ≥ 5/7</span>
+          <span class="toolchip">Conflits d’agenda ≤ 1/sem</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="social-proof">
+      <h2>✨ Ça marche dans la vraie vie</h2>
+      <ul>
+        <li>
+          <strong>Manager (45' meeting-heavy)</strong> : 3 créneaux midi + 1
+          matin week-end → +20% constance en 6 semaines.
+        </li>
+        <li>
+          <strong>Parent de 2 enfants</strong> : "Batch Cooking" le dimanche →
+          soirs libres + meilleurs repas = meilleure récup.
+        </li>
+        <li>
+          <strong>Consultant</strong> :
+          <a href="https://reclaim.ai/" target="_blank" rel="noopener"
+            >Reclaim.ai</a
+          >
+          auto-reschedule → zéro séance annulée malgré déplacements.
+        </li>
+      </ul>
+    </section>
+
+    <section id="faq">
+      <h2>❓FAQ express</h2>
+      <p>
+        <strong>Et si une réunion tombe sur mon sport ?</strong> Reclaim recase
+        automatiquement le créneau le jour même.
+      </p>
+      <p>
+        <strong>Si mon agenda change chaque semaine ?</strong> Planifie 15' le
+        vendredi → ajuste S+1 (pro/perso) en une passe.
+      </p>
+      <p>
+        <strong>Je n'ai pas 9h ...</strong> Commence à 4-5h : même méthode,
+        mêmes effets (constance > volume).
+      </p>
+    </section>
+
+    <section id="cta" class="cta">
+      <div class="badge">📌 Et maintenant ?</div>
+      <p>Cette méthode est la base. Ton agenda est unique.</p>
+      <p>
+        En <strong>60 minutes de coaching 1:1</strong>, on cartographie ton
+        temps, verrouille tes créneaux et on crée ton plan d'entraînement.
+      </p>
+
+      <div class="btn-row">
+        <a
+          class="btn"
+          href="https://calendly.com/priority-stack/priority-stack-session-coaching"
+          target="_blank"
+          rel="noopener"
+          >Réserver un créneau</a
+        >
+        <a
+          class="btn btn-outline"
+          href="https://www.linkedin.com/in/florian-marin/"
+          target="_blank"
+          rel="noopener"
+          >M'écrire en DM</a
+        >
+      </div>
+
+      <p>
+        <small
+          >Pas prêt ? <a href="#checklist">Télécharge la checklist</a> et
+          commence aujourd'hui.</small
+        >
+      </p>
+    </section>
+
+    <footer>
+      🧡 Performer sans sacrifier l'essentiel - <strong>Florian MARIN</strong>
+    </footer>
+  </body>
+</html>
