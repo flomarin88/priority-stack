@@ -414,6 +414,37 @@
           gap: var(--space-2);
         }
       }
+
+      /* Accordéons starter-kits */
+      .accordion {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px 14px;
+        margin: 10px 0;
+      }
+      .accordion > summary {
+        list-style: none;
+        cursor: pointer;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .accordion > summary::-webkit-details-marker {
+        display: none;
+      }
+      .accordion[open] {
+        border-color: var(--accent);
+        background: #fffdfa;
+      }
+      .accordion ul {
+        margin: 10px 0;
+        padding-left: 20px;
+      }
+      .accordion p {
+        margin: 8px 0 0;
+      }
     </style>
   </head>
   <body class="prose">
@@ -581,14 +612,14 @@
     </section>
 
     <section id="resultats">
-      <h2>🎯 Résultats (4–6 semaines)</h2>
+      <h2>🎯 Résultats (4-6 semaines)</h2>
       <ul class="resultats">
         <li>
-          6–9 h de sport/semaine <strong>sans stress ni culpabilité</strong>
+          6-9 h de sport/semaine <strong>sans stress ni culpabilité</strong>
         </li>
         <li>Soirs disponibles pour la famille <strong>≥ 5/7</strong></li>
         <li>
-          Conflits d’agenda <strong>rares</strong> (règles + auto-reschedule)
+          Conflits d'agenda <strong>rares</strong> (règles + auto-reschedule)
         </li>
         <li>Énergie durable : sommeil régulier, alimentation simplifiée</li>
       </ul>
@@ -599,9 +630,61 @@
         <div class="toolchips">
           <span class="toolchip">Séances honorées ≥ 85%</span>
           <span class="toolchip">Soirs en famille ≥ 5/7</span>
-          <span class="toolchip">Conflits d’agenda ≤ 1/sem</span>
+          <span class="toolchip">Conflits d'agenda ≤ 1/sem</span>
         </div>
       </div>
+    </section>
+
+    <section id="starter-kits" class="cta">
+      <div class="badge">⚙️ Démarrer en 2 clics</div>
+      <p>
+        Choisis un kit, importe le <strong>.ics</strong> (Europe/Paris) et
+        ajuste selon tes contraintes.
+      </p>
+
+      <details class="accordion">
+        <summary>🧩 Starter 4h - 3 midis + 1 matin (constance)</summary>
+        <ul>
+          <li>Mardi 12:15 - 45 min (intensité CAP/Nat)</li>
+          <li>Jeudi 12:15 - 45 min (technique Nat/CAP)</li>
+          <li>Samedi 07:30 - 1 h 30 (vélo)</li>
+          <li>Dimanche 08:00 - 1 h (endurance CAP)</li>
+        </ul>
+        <p>
+          <a href="starter-4h.ics" download>📅 Télécharger - Kit 4h (.ics)</a>
+        </p>
+      </details>
+
+      <details class="accordion">
+        <summary>🧩 Starter 6h - 3 midis + 2 week-end (progression)</summary>
+        <ul>
+          <li>Lun 12:15 - 1 h (vitesse/seuil CAP/Nat)</li>
+          <li>Mer 12:15 - 1 h (technique Nat)</li>
+          <li>Ven 12:15 - 1 h (force vélo HT)</li>
+          <li>Sam 07:30 - 2 h (vélo)</li>
+          <li>Dim 08:00 - 1 h (CAP endurance)</li>
+        </ul>
+        <p>
+          <a href="starter-6h.ics" download>📅 Télécharger - Kit 6h (.ics)</a>
+        </p>
+      </details>
+
+      <details class="accordion">
+        <summary>
+          🧩 Starter 9h - 4 midis + 2 week-end (volume maîtrisé)
+        </summary>
+        <ul>
+          <li>Lun 12:15 - 1 h (CAP rythme)</li>
+          <li>Mar 12:15 - 1 h (Nat technique + séries)</li>
+          <li>Jeu 12:15 - 1 h (vélo HT sweet spot)</li>
+          <li>Ven 12:15 - 1 h (Nat seuil)</li>
+          <li>Sam 07:30 - 3 h (vélo long)</li>
+          <li>Dim 08:00 - 2 h (CAP longue ou brick)</li>
+        </ul>
+        <p>
+          <a href="starter-9h.ics" download>📅 Télécharger - Kit 9h (.ics)</a>
+        </p>
+      </details>
     </section>
 
     <section id="social-proof">
@@ -665,13 +748,6 @@
           >M'écrire en DM</a
         >
       </div>
-
-      <p>
-        <small
-          >Pas prêt ? <a href="#checklist">Télécharge la checklist</a> et
-          commence aujourd'hui.</small
-        >
-      </p>
     </section>
 
     <footer>
