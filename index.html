@@ -19,6 +19,7 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image" content="/og/priority-stack-1200x630.png" />
+  <meta property="og:logo" content="favicon.svg" />
 
   <meta name="theme-color" content="#0A0A0A">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -283,53 +284,6 @@
 
   <script defer data-domain="stack.florianmarin.me" src="https://plausible.io/js/script.js"></script>
 
-  <script>
-    const track = (name, props = {}) =>
-      window.plausible && window.plausible(name, { props });
-
-    const on = (selector, type, handler) => {
-      document.querySelectorAll(selector).forEach(el =>
-        el.addEventListener(type, handler, { passive: true })
-      );
-    };
-
-    on('a[href*="calendly.com"]', 'click', () => {
-      track('CTA • Réserver Session', { placement: 'hero|offer|sticky' });
-    });
-
-    on('a[href*="linkedin.com/in/florian-marin"]', 'click', () => {
-      track('CTA • DM LinkedIn', { placement: 'hero|offer|footer' });
-    });
-
-
-    // --- Scroll depth / vues de sections clés ---
-    const seen = {};
-    const watch = (id, name) => {
-      const el = document.getElementById(id);
-      if (!el || !('IntersectionObserver' in window)) return;
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting && !seen[name]) {
-              track(name);
-              seen[name] = true;
-              io.disconnect();
-            }
-          });
-        },
-        { threshold: 0.3 }
-      );
-      io.observe(el);
-    };
-
-    watch('offer', 'SCROLL • Offer');
-    watch('me', 'SCROLL • Me');
-    watch('social-proof', 'SCROLL • Social Proof');
-    watch('summary', 'SCROLL • Summary');
-    watch('faq', 'SCROLL • FAQ');
-    watch('about', 'SCROLL • About');
-  </script>
-
   <!-- SEO Product schema -->
   <script type="application/ld+json">
   {
@@ -345,7 +299,6 @@
 </head>
 
 <body>
-
   <div class="wrap">
     <!-- HERO -->
     <header class="hero" id="hero">
@@ -414,7 +367,8 @@
         <ul class="list">
           <li>Diagnostic complet de ton agenda actuel</li>
           <li>Plan personnalisé : Clarté · Discipline · Énergie</li>
-          <li>Livrable : feuille de route Notion + recommandations outils (Reclaim, Google Calendar, Garmin, Polar, ...)</li>
+          <li>Livrable : feuille de route Notion + recommandations outils (Reclaim, Google Calendar, Garmin, Polar, ...)
+          </li>
         </ul>
         <p class="note">Format : visio 1:1 · Paiement unique · <strong>3 créneaux ouverts avant le 31 octobre</strong>
         </p>
@@ -450,8 +404,9 @@
           </p>
         </div>
         <div class="card">
-          <strong>Audrey, 39 ans — Maman / Associée Cabinet Médical  / Tennis </strong>
-          <p>Régularité sportive sans empiéter sur la famille : <strong>+3h de sport</strong> / semaine. Agenda stabilisé, énergie constante.</p>
+          <strong>Audrey, 39 ans — Maman / Associée Cabinet Médical / Tennis </strong>
+          <p>Régularité sportive sans empiéter sur la famille : <strong>+3h de sport</strong> / semaine. Agenda
+            stabilisé, énergie constante.</p>
         </div>
       </div>
     </section>
@@ -500,7 +455,7 @@
   </div>
 
   <!-- Sticky CTA -->
-  <div class="sticky">
+  <div class="sticky" data-placement="sticky">
     <div class="wrap">
       <small>Session Priority Stack™ — 60 min, 200 € · 3 créneaux avant le 31 octobre</small>
       <a class="btn" href="https://calendly.com/florian-marin/priority-stack-session-coaching" target="_blank"
@@ -508,6 +463,66 @@
     </div>
   </div>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const getPlacement = (el) => {
+        const explicit = el.closest('[data-placement]');
+        if (explicit && explicit.getAttribute('data-placement')) {
+          return explicit.getAttribute('data-placement');
+        }
+        // Sinon on remonte à la section parente
+        const section = el.closest('section');
+        if (section && section.id) return section.id;
+        // Dernier recours : id du parent direct, si présent
+        const parentWithId = el.closest('[id]');
+        if (parentWithId) return parentWithId.id;
+        return 'unknown';
+      };
+
+      const track = (name, props = {}) => {
+        if (window.plausible) window.plausible(name, { props });
+      };
+
+      const on = (selector, type, handler) => {
+        document.querySelectorAll(selector).forEach(el => {
+          el.addEventListener(type, handler, { passive: true });
+        });
+      };
+
+      on('a[href*="calendly.com"]', 'click', (e) => {
+        const placement = getPlacement(e.currentTarget)
+        track('CTA • Réserver Session', { placement })
+      });
+
+      on('a[href*="linkedin.com/in/florian-marin"]', 'click', (e) => {
+        const placement = getPlacement(e.currentTarget)
+        track('CTA • DM LinkedIn', { placement })
+      });
+
+      const seen = {};
+      const watch = (id, name) => {
+        const el = document.getElementById(id);
+        if (!el || !('IntersectionObserver' in window)) return;
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting && !seen[name]) {
+              track(name);
+              seen[name] = true;
+            }
+          });
+        }, { threshold: 0.3 });
+        io.observe(el);
+      };
+
+      // Tes IDs existent bien dans la page (offer, me, social-proof, summary, faq, about)
+      watch('offer', 'SCROLL • Offer');
+      watch('me', 'SCROLL • Me');
+      watch('social-proof', 'SCROLL • Social Proof');
+      watch('summary', 'SCROLL • Summary');
+      watch('faq', 'SCROLL • FAQ');
+      watch('about', 'SCROLL • About');
+    });
+  </script>
 </body>
 
 </html>
