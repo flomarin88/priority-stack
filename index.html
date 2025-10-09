@@ -1,858 +1,507 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Priority Stack - Performer sans sacrifier l'essentiel</title>
-    <meta
-      property="og:title"
-      content="Priority Stack - Performer sans sacrifier l'essentiel"
-    />
-    <meta
-      property="og:description"
-      content="La méthode en 3 piliers pour intégrer ~9h de sport dans un agenda de manager/dirigeant."
-    />
-    <meta property="og:type" content="article" />
-    <meta property="og:image" content="cover.png" />
-    <meta
-      property="og:see_also"
-      content="https://www.instagram.com/florian_tech_tri/"
-    />
-    <meta property="twitter:image" content="twitter.png" />
-    <link rel="me" href="https://www.instagram.com/florian_tech_tri/" />
-    <link rel="me" href="https://www.linkedin.com/in/florian-marin/" />
 
-    <script
-      defer
-      data-domain="stack.florianmarin.me"
-      src="https://plausible.io/js/script.js"
-    ></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Priority Stack™ — Session 60 min (200 €) | Florian Marin</title>
+  <meta name="description"
+    content="Systèmes de performance pour dirigeants sportifs. Session Priority Stack™ : 60 min pour reprendre le contrôle de ton temps, de ton énergie et de ta performance — sans sacrifier l'essentiel." />
 
-    <script>
-      // Helper
-      const track = (name, props = {}) =>
-        window.plausible && window.plausible(name, { props });
+  <!-- Open Graph -->
+  <meta property="og:title" content="Priority Stack™ — Session 60 min (200 €) | Florian Marin" />
+  <meta property="og:description"
+    content="Reprends le contrôle de ton temps, de ton énergie et de ta performance. Session 1:1 — 60 min, 200 €. 3 créneaux avant le 31 octobre." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="cover.png" />
+  <meta property="og:url" content="https://priority-stack.com/" />
 
-      // CTA Coaching
-      document.querySelectorAll('a[href*="calendly.com"]').forEach((a) => {
-        a.addEventListener("click", () =>
-          track("CTA Coaching", { placement: "hero|cta" })
-        );
-      });
-      document
-        .querySelectorAll('a[href*="linkedin.com/in/florian-marin"]')
-        .forEach((a) => {
-          a.addEventListener("click", () =>
-            track("CTA DM LinkedIn", { placement: "hero|cta" })
-          );
-        });
+  <!-- Palette Priority Stack -->
+  <style>
+    :root {
+      /* Fond principal */
+      --bg: #0A0A0A;
+      /* Texte principal */
+      --text: #F5F5F5;
+      /* Texte secondaire */
+      --muted: #CCCCCC;
+      /* Or Priority (autorité) */
+      --accent: #D4AF37;
+      /* Orange (action) */
+      --cta: #FF6B00;
+      /* Cartes / blocs */
+      --surface: #2B2B2B;
+      /* Bordures subtiles */
+      --border: #1C1C1C;
+      --radius: 16px;
+      --w: 860px;
+    }
 
-      // Assets
-      [
-        ["4h", "starter-4h.ics"],
-        ["6h", "starter-6h.ics"],
-        ["9h", "starter-9h.ics"],
-      ].forEach(([label, file]) => {
-        document.querySelectorAll(`a[href$="${file}"]`).forEach((a) => {
-          a.addEventListener("click", () =>
-            track("DL Kit ICS", { plan: label })
-          );
-        });
-      });
+    * {
+      box-sizing: border-box
+    }
 
-      // Scroll depth (a vu la section starter-kits ? et le CTA final ?)
-      const seen = {};
-      const watch = (id, name) => {
-        const el = document.getElementById(id);
-        if (!el || !("IntersectionObserver" in window)) return;
-        const io = new IntersectionObserver(
-          (es) => {
-            es.forEach((e) => {
-              if (e.isIntersecting && !seen[name]) {
-                track(name);
-                seen[name] = true;
-                io.disconnect();
-              }
-            });
-          },
-          { threshold: 0.3 }
-        );
-        io.observe(el);
-      };
-      watch("starter-kits", "VU Starter Kits");
-      watch("cta", "VU CTA Final");
-    </script>
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Inter, Roboto, Helvetica, Arial;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 18px 88px;
+    }
 
-    <style>
-      :root {
-        --bg: #ffffff;
-        --text: #1c1c1c;
-        --muted: #555;
-        --accent: #f29f05; /* Orange */
-        --accent2: #ffcf00; /* Jaune */
-        --pill: #fef3e6;
-        --border: #eee;
-      }
+    .wrap {
+      max-width: var(--w);
+      margin: 0 auto;
+    }
 
-      * {
-        box-sizing: border-box;
-      }
+    h1,
+    h2,
+    h3 {
+      margin: 0 0 10px
+    }
 
-      html {
-        font-size: 16px;
-      }
-      body {
-        margin: 0;
-        color: var(--text);
-        background: var(--bg);
-        line-height: 1.6;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji",
-          "Segoe UI Symbol";
-        padding: 0 18px 48px;
-        max-width: 860px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+    h1 {
+      font-size: clamp(28px, 3.8vw, 44px);
+      letter-spacing: .2px
+    }
 
-      /* -------- Header (Flex) -------- */
-      header {
-        margin: 24px 0 28px;
-        padding: 32px 20px;
-        border-radius: 20px;
-        background: linear-gradient(
-          135deg,
-          var(--accent) 0%,
-          var(--accent2) 100%
-        );
-        color: #000;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        text-align: center;
-      }
-      header h1,
-      header h3 {
-        margin: 0;
-      }
-      header h1 {
-        font-size: 2rem;
-        letter-spacing: 0.2px;
-      }
-      header h3 {
-        font-size: 1rem;
-        font-weight: 600;
-        opacity: 0.9;
-      }
+    h2 {
+      font-size: clamp(20px, 2.6vw, 26px);
+      color: var(--accent);
+      border-bottom: 1px solid var(--surface);
+      padding-bottom: 8px;
+      margin-top: 28px
+    }
 
-      /* -------- Sections -------- */
-      section {
-        margin: 28px 0;
-      }
-      h2 {
-        font-size: 1.25rem;
-        margin: 0 0 10px;
-        border-bottom: 2px solid var(--border);
-        padding-bottom: 6px;
-      }
-      p {
-        margin: 10px 0;
-      }
-      a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
+    /* Tweak #1: h3 en or (pas d'orange hors CTA) */
+    h3 {
+      color: var(--accent);
+      font-size: clamp(16px, 2.1vw, 20px)
+    }
 
-      /* -------- Callout (Flex) -------- */
-      .callout {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 14px 16px;
-        background: var(--pill);
-        border: 1px solid var(--accent);
-        border-radius: 14px;
-        margin: 12px 0;
-      }
-      .callout .icon {
-        flex: 0 0 auto;
-        font-size: 1.2rem;
-        line-height: 1;
-        margin-top: 2px;
-      }
-      .callout > div {
-        flex: 1 1 auto;
-        min-width: 0;
-      }
+    p {
+      margin: 10px 0
+    }
 
-      /* IMPORTANT : strong inline (ne force plus le retour à la ligne) */
-      strong {
-        font-weight: 700;
-        display: inline;
-      }
-      .callout strong {
-        display: inline;
-      }
+    a {
+      color: var(--accent);
+      text-decoration: none
+    }
 
-      /* -------- Lists -------- */
-      ul {
-        padding-left: 22px;
-        margin: 10px 0;
-      }
-      .callout ul li {
-        margin: 8px 0;
-      } /* +4px de respiration mobile */
-      .resultats li {
-        margin: 6px 0;
-      }
+    a:hover {
+      color: var(--cta);
+      text-decoration: underline
+    }
 
-      /* -------- Checklist (Flex) -------- */
-      .checklist {
-        list-style: none;
-        padding-left: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .checklist li {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 12px;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        background: #fff;
-      }
-      .checklist li label {
-        flex: 1 1 auto;
-        cursor: pointer;
-      }
-      .checklist input[type="checkbox"] {
-        width: 18px;
-        height: 18px;
-        accent-color: var(--accent);
-        flex: 0 0 auto;
-      }
+    .accent {
+      color: var(--accent)
+    }
 
-      /* -------- Tools (chips en Flex) -------- */
-      .tools {
-        margin-top: 10px;
-      }
-      .tools-title {
-        font-weight: 700;
-        font-size: 0.95rem;
-        margin-bottom: 6px;
-      }
-      .toolchips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-      }
-      .toolchip {
-        display: inline-flex;
-        align-items: center;
-        padding: 4px 10px;
-        border-radius: 999px;
-        background: var(--pill);
-        border: 1px solid var(--accent);
-        font-size: 0.85rem;
-        line-height: 1;
-      }
+    /* Hero */
+    header.hero {
+      margin: 22px 0 26px;
+      padding: 28px 22px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #0C0C0C 0%, #121212 55%, #171717 100%);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
 
-      /* -------- CTA (Flex colonne) -------- */
-      .cta {
-        border: 2px dashed var(--accent);
-        border-radius: 16px;
-        padding: 16px;
-        background: #fffdfa;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .badge {
-        align-self: flex-start;
-        display: inline-flex;
-        background: #000;
-        color: #fff;
-        padding: 4px 10px;
-        border-radius: 999px;
-        font-size: 0.8rem;
-        margin-bottom: 8px;
-        letter-spacing: 0.2px;
+    .tagline {
+      font-weight: 800;
+      font-size: clamp(28px, 4.2vw, 46px);
+    }
+
+    .sub {
+      font-size: clamp(14px, 2.2vw, 18px);
+      color: var(--muted);
+      max-width: 720px;
+      margin: 8px auto 0
+    }
+
+    /* CTA */
+    .btnrow {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 16px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      background: var(--cta);
+      border: 2px solid var(--cta);
+      color: #000;
+      transition: .25s;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000
+    }
+
+    .btn--outline {
+      background: transparent;
+      border: 2px solid var(--cta);
+      color: var(--text);
+    }
+
+    .btn--outline:hover {
+      background: var(--cta);
+      color: #000
+    }
+
+    /* Tweak #2: focus visible (accessibilité) */
+    .btn:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    /* Cards / grids */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr)
+    }
+
+    .list {
+      margin: 10px 0;
+      padding-left: 18px
+    }
+
+    .kpis {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px
+    }
+
+    /* Tweak #3: meilleure lisibilité des chips */
+    .chip {
+      background: #1A1A1A;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-weight: 700;
+      font-size: 14px;
+      color: #E6E6E6
+    }
+
+    /* Table résumé */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0
+    }
+
+    th,
+    td {
+      border: 1px solid var(--surface);
+      padding: 10px;
+      text-align: left
+    }
+
+    th {
+      background: #141414
+    }
+
+    /* Sections */
+    section {
+      margin: 26px 0
+    }
+
+    .note,
+    .muted,
+    small {
+      color: var(--muted);
+    }
+
+    /* Sticky footer CTA */
+    .sticky {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      backdrop-filter: blur(8px);
+      background: rgba(10, 10, 10, .9);
+      border-top: 1px solid var(--surface);
+      z-index: 20;
+    }
+
+    .sticky .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px
+    }
+
+    .sticky small {
+      color: var(--muted)
+    }
+
+    /* Mobile */
+    @media (max-width:860px) {
+      .grid-3 {
+        grid-template-columns: 1fr
       }
 
-      /* -------- Footer -------- */
-      footer {
-        margin-top: 28px;
-        color: var(--muted);
-        font-weight: 600;
-        text-align: center;
+      .sticky .wrap {
+        justify-content: center
       }
+    }
+  </style>
 
-      /* -------- Buttons (si utilisés) -------- */
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        padding: 10px 16px;
-        border-radius: 10px;
-        background: var(--accent);
-        color: #000;
-        font-weight: 700;
-        text-decoration: none;
-        border: 2px solid var(--accent);
-      }
-      .btn:hover {
-        filter: brightness(0.95);
-      }
-      .btn-outline {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        padding: 10px 16px;
-        border-radius: 10px;
-        background: #fff;
-        color: var(--text);
-        text-decoration: none;
-        border: 2px solid var(--accent);
-      }
-      .btn:focus-visible,
-      .btn-outline:focus-visible {
-        outline: 2px solid #000;
-        outline-offset: 2px;
-      }
+  <script defer data-domain="stack.priority-stack.com" src="https://plausible.io/js/script.js"></script>
 
-      /* Rangée de boutons */
-      .cta .btn-row {
-        display: flex;
-        gap: 10px;
-        align-items: stretch;
-      }
+  <script>
+    const track = (name, props = {}) =>
+      window.plausible && window.plausible(name, { props });
 
-      /* Deux boutons = même largeur + même hauteur */
-      .cta .btn-row .btn,
-      .cta .btn-row .btn-outline {
-        flex: 1 1 0; /* égalise la largeur */
-        min-width: 0; /* autorise le shrink si texte long */
-        text-align: center;
-        white-space: nowrap; /* évite le saut de ligne qui casserait la hauteur */
-        padding: 12px 16px; /* identique pour les deux */
-      }
+    const on = (selector, type, handler) => {
+      document.querySelectorAll(selector).forEach(el =>
+        el.addEventListener(type, handler, { passive: true })
+      );
+    };
 
-      /* -------- Mobile tweaks -------- */
-      @media (max-width: 600px) {
-        body {
-          font-size: 16px;
-        }
-        h2 {
-          font-size: 1.15rem;
-        }
-        .callout {
-          padding: 12px;
-        }
-        .callout .icon {
-          font-size: 1.1rem;
-        }
-        .tools-title {
-          font-size: 0.9rem;
-        }
-        .toolchip {
-          font-size: 0.85rem;
-          padding: 4px 9px;
-        }
-        .cta .btn-row {
-          flex-direction: column;
-        }
-        .resultats li {
-          margin: 8px 0;
-        }
-      }
+    on('a[href*="calendly.com"]', 'click', () => {
+      track('CTA • Réserver Session', { placement: 'hero|offer|sticky' });
+    });
 
-      /* ============ AERATION GLOBALE (overrides) ============ */
+    on('a[href*="linkedin.com/in/florian-marin"]', 'click', () => {
+      track('CTA • DM LinkedIn', { placement: 'hero|offer|footer' });
+    });
 
-      /* Echelle d'espaces */
-      :root {
-        --space-1: 4px;
-        --space-2: 8px;
-        --space-3: 12px;
-        --space-4: 16px;
-        --space-5: 20px;
-        --space-6: 28px;
-        --space-7: 36px;
-        --space-8: 48px;
-      }
 
-      /* Typo + rythme vertical */
-      body {
-        line-height: 1.7;
-      }
-      h1 {
-        font-size: clamp(1.9rem, 1.2rem + 2.2vw, 2.4rem);
-        text-wrap: balance;
-      }
-      h2 {
-        font-size: clamp(1.125rem, 1rem + 1vw, 1.35rem);
-        text-wrap: balance;
-      }
+    // --- Scroll depth / vues de sections clés ---
+    const seen = {};
+    const watch = (id, name) => {
+      const el = document.getElementById(id);
+      if (!el || !('IntersectionObserver' in window)) return;
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting && !seen[name]) {
+              track(name);
+              seen[name] = true;
+              io.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      io.observe(el);
+    };
 
-      section {
-        margin-block: var(--space-7);
-      }
-      section > :first-child {
-        margin-top: 0;
-      }
-      section > :last-child {
-        margin-bottom: 0;
-      }
+    watch('offer', 'SCROLL • Offer');
+    watch('me', 'SCROLL • Me');
+    watch('social-proof', 'SCROLL • Social Proof');
+    watch('summary', 'SCROLL • Summary');
+    watch('faq', 'SCROLL • FAQ');
+    watch('about', 'SCROLL • About');
+  </script>
 
-      /* Aération des blocs clés */
-      header {
-        padding: var(--space-6) var(--space-4);
-        gap: var(--space-2);
-      }
-      .callout {
-        padding: var(--space-4);
-        gap: var(--space-3);
-      }
-      .callout p {
-        line-height: 1.68;
-        margin-block: var(--space-2);
-      }
-      .callout ul {
-        padding-left: 20px;
-      }
-      .callout ul li {
-        margin: var(--space-2) 0;
-      }
+  <!-- SEO Product schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Product",
+    "name":"Session Priority Stack™",
+    "brand":{"@type":"Brand","name":"Florian Marin"},
+    "description":"Session 1:1 de 60 minutes pour concevoir un système de performance durable (Clarté, Discipline, Énergie) destiné aux dirigeants sportifs.",
+    "audience":{"@type":"Audience","audienceType":"Dirigeants sportifs / managers"},
+    "offers":{"@type":"Offer","price":"200","priceCurrency":"EUR","availability":"https://schema.org/InStock"}
+  }
+  </script>
+</head>
 
-      .checklist {
-        gap: var(--space-3);
-      }
-      .checklist li {
-        padding: 12px 14px;
-      }
+<body>
 
-      .tools {
-        margin-top: var(--space-3);
-      }
-      .toolchips {
-        gap: var(--space-2);
-      }
-
-      .cta {
-        padding: var(--space-5);
-        gap: var(--space-3);
-      }
-      footer,
-      .site-footer {
-        margin-top: var(--space-7);
-      }
-
-      /* Lisibilité des paragraphes "dense"" (optionnel) 
-   Active en mettant <body class="prose"> */
-      body.prose p,
-      body.prose li {
-        max-width: 70ch;
-      }
-
-      /* Mobile : confort + respirations supplémentaires */
-      @media (max-width: 600px) {
-        body {
-          font-size: 16px;
-        }
-        .callout {
-          padding: var(--space-3);
-        }
-        .resultats li {
-          margin: var(--space-2) 0;
-        }
-        .cta .btn-row {
-          gap: var(--space-2);
-        }
-        .price-line {
-          font-size: 1.4rem;
-        }
-      }
-
-      /* Accordéons starter-kits */
-      .accordion {
-        background: #fff;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 12px 14px;
-        margin: 10px 0;
-      }
-      .accordion > summary {
-        list-style: none;
-        cursor: pointer;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .accordion > summary::-webkit-details-marker {
-        display: none;
-      }
-      .accordion[open] {
-        border-color: var(--accent);
-        background: #fffdfa;
-      }
-      .accordion ul {
-        margin: 10px 0;
-        padding-left: 20px;
-      }
-      .accordion p {
-        margin: 8px 0 0;
-      }
-      .price-line {
-        font-size: 1.5rem;
-        font-weight: 800;
-        margin: 4px 0 2px;
-        line-height: 1;
-      }
-      .price-line .muted {
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--muted);
-      }
-    </style>
-  </head>
-  <body class="prose">
-    <header>
-      <h1>🚀 Priority Stack</h1>
-      <h3>
-        La méthode pour intégrer ~9h de sport dans un agenda de manager /
-        dirigeant.
-      </h3>
-      <footer>🧡 Performer sans sacrifier l'essentiel</footer>
+  <div class="wrap">
+    <!-- HERO -->
+    <header class="hero" id="hero">
+      <div class="tagline">Performer sans sacrifier <span class="accent">l'essentiel</span></div>
+      <p class="sub">Systèmes de performance pour dirigeants sportifs — reprendre le contrôle de ton temps, de ton
+        énergie et de ta performance.</p>
+      <div class="btnrow">
+        <a class="btn" href="https://calendly.com/florian-marin/priority-stack-session-coaching" target="_blank"
+          rel="noopener" aria-label="Réserver la session Priority Stack, 200 euros">Réserver la session Priority Stack™
+          — 200 €</a>
+        <a class="btn btn--outline" href="https://www.linkedin.com/in/florian-marin/" target="_blank" rel="noopener"
+          aria-label="Me contacter sur LinkedIn en message privé">Me contacter en DM</a>
+      </div>
     </header>
 
-    <section id="mythe">
-      <h2>❌ Le mythe</h2>
-      <p>
-        On pense souvent que pour progresser en triathlon, il faut s'entraîner
-        <strong>15 à 20&nbsp;heures par semaine</strong>. <em>C'est faux.</em>
-      </p>
-      <p>
-        Avec la bonne organisation,
-        <strong>6 à 9&nbsp;heures suffisent</strong> pour performer, tout en
-        restant présent pour sa famille et son travail.
-      </p>
+    <!-- PROBLÈME -->
+    <section id="problem">
+      <h2>🚧 Le problème</h2>
+      <p>Les dirigeants sportifs veulent tout donner : à leur équipe, leur famille, leur passion. Mais l'agenda explose,
+        l'énergie baisse, et la discipline ne suffit plus.</p>
+      <p><strong>Le problème, ce n'est pas la volonté. C'est l'absence de système.</strong></p>
     </section>
 
+    <!-- SOLUTION -->
     <section id="solution">
-      <h2>✅ La solution : la méthode Priority Stack</h2>
-      <p>
-        Une méthode simple en <strong>3 piliers</strong> pour intégrer ~9h de
-        sport sans sacrifier l'essentiel.
-      </p>
-
-      <!-- Pilier 1 -->
-      <div class="callout">
-        <div class="icon">🗺️</div>
-        <div>
-          <strong>1️⃣ Clarté totale</strong>
-          <p>
-            <em>Ne subis plus ton agenda.</em> Rassemble pro + perso au même
-            endroit pour décider en conscience.
-          </p>
-          <ul>
-            <li>Un seul calendrier partagé (pro/perso/famille)</li>
-            <li>Rituels de planification : 15' le vendredi + 10' le lundi</li>
-            <li>Blocs "priorités" visibles avant les demandes externes</li>
+      <h2>⚙️ La solution : Priority Stack™</h2>
+      <p>Une méthode concrète, inspirée du management tech et du sport d'endurance. Trois piliers pour remettre tes
+        vraies priorités au centre :</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>1️⃣ Clarté Totale</h3>
+          <ul class="list">
+            <li>Cartographie de ton agenda et de tes responsabilités</li>
+            <li>Identification des fuites de temps et arbitrages</li>
           </ul>
-          <p>
-            <strong>🏅 Bénéfices</strong> : moins d'imprévus, arbitrages
-            faciles, énergie mentale préservée.
-          </p>
-          <div class="tools" aria-label="Outils et automatisations">
-            <div class="tools-title">🛠️ Outils</div>
-            <div class="toolchips">
-              <span class="toolchip">Google Agenda</span>
-              <span class="toolchip">Rappels anti-conflits</span>
-            </div>
+          <div class="kpis"><span class="chip">+2 à +4 h / semaine</span><span class="chip">Décisions sereines</span>
           </div>
         </div>
-      </div>
-
-      <!-- Pilier 2 -->
-      <div class="callout">
-        <div class="icon">⏱️</div>
-        <div>
-          <strong>2️⃣ Discipline sacrée</strong>
-          <p>
-            Ton entraînement devient un <em>rendez-vous pro</em> avec toi-même :
-            anticipé, non négociable, orienté progrès.
-          </p>
-          <ul>
-            <li>
-              3-4 créneaux "verrouillés" / semaine (midi + matin week-end)
-            </li>
-            <li>Cycle charge → récup → pic + <em>plan B</em> systématique</li>
-            <li>Auto-reschedule en cas d'imprévu</li>
+        <div class="card">
+          <h3>2️⃣ Discipline Sacrée</h3>
+          <ul class="list">
+            <li>Entraînements & récupération verrouillés (non négociables)</li>
+            <li>Plan B automatique quand la réalité bouge</li>
           </ul>
-          <p>
-            <strong>🏅 Bénéfices</strong> : <strong>régularité</strong>,
-            progression mesurable, sérénité (tu sais <em>quand</em> tu
-            t'entraînes).
-          </p>
-          <div class="tools" aria-label="Outils et automatisations">
-            <div class="tools-title">🛠️ Outils</div>
-            <div class="toolchips">
-              <span class="toolchip">Reclaim.ai</span>
-              <span class="toolchip">Auto-reschedule</span>
-            </div>
-          </div>
+          <div class="kpis"><span class="chip">Régularité ≥ 85%</span><span class="chip">Zéro culpabilité</span></div>
         </div>
-      </div>
-
-      <!-- Pilier 3 -->
-      <div class="callout">
-        <div class="icon">👨‍👩‍👧‍👦</div>
-        <div>
-          <strong>3️⃣ Énergie durable</strong>
-          <p>
-            La famille est ton <em>socle</em> : tu organises les entraînements
-            autour des moments forts pour recharger… et performer.
-          </p>
-          <ul>
-            <li>
-              Week-end "famille first" : tôt le matin + siestes + activités
-              enfants
-            </li>
-            <li>Soirs disponibles = présence + qualité</li>
-            <li>Rituels récup partagés (repas, sommeil, off screens)</li>
+        <div class="card">
+          <h3>3️⃣ Énergie Durable</h3>
+          <ul class="list">
+            <li>Équilibre pro / sport / famille sur la durée</li>
+            <li>Rituels simples (sommeil, repas, écrans)</li>
           </ul>
-          <p>
-            <strong>🏅 Bénéfices</strong> : plus d'énergie, zéro culpabilité,
-            adhésion à la maison.
-          </p>
-          <div class="tools" aria-label="Outils et automatisations">
-            <div class="tools-title">🛠️ Outils</div>
-            <div class="toolchips">
-              <span class="toolchip">Jow</span>
-              <span class="toolchip">Drive (courses)</span>
-            </div>
-          </div>
+          <div class="kpis"><span class="chip">Présence à la maison</span><span class="chip">Clarté mentale</span></div>
         </div>
       </div>
     </section>
 
-    <section id="checklist">
-      <span class="badge">📝 Checklist rapide</span>
-      <ul class="checklist">
-        <li>
-          <input type="checkbox" id="c1" />
-          <label for="c1"
-            >Un seul agenda <strong>pro/perso/famille</strong> (couleurs
-            OK)</label
-          >
-        </li>
-        <li>
-          <input type="checkbox" id="c2" />
-          <label for="c2"
-            ><strong>3-4 créneaux Sport</strong> verrouillés / semaine</label
-          >
-        </li>
-        <li>
-          <input type="checkbox" id="c3" />
-          <label for="c3"
-            >Plan B pour chaque séance (pluie/déplacement/enfants)</label
-          >
-        </li>
-        <li>
-          <input type="checkbox" id="c4" />
-          <label for="c4"
-            >Week-end <strong>famille first</strong> (tôt + siestes +
-            activités)</label
-          >
-        </li>
-        <li>
-          <input type="checkbox" id="c5" />
-          <label for="c5"
-            ><strong>Batch Cooking</strong> + retrait Drive programmé</label
-          >
-        </li>
+    <!-- OFFRE -->
+    <section id="offer">
+      <h2>🎯 L'offre : Session Priority Stack™</h2>
+      <div class="card">
+        <p><strong>Session individuelle — 60 minutes — 200 €</strong></p>
+        <p>En 1h, on conçoit ensemble ton système de performance durable. Tu repars avec un <strong>plan clair</strong>,
+          une <strong>carte d'agenda personnalisée</strong> et les <strong>outils concrets</strong> pour l'appliquer dès
+          la semaine suivante.</p>
+        <ul class="list">
+          <li>Diagnostic complet de ton agenda actuel</li>
+          <li>Plan personnalisé : Clarté · Discipline · Énergie</li>
+          <li>Livrable : feuille de route Notion + recommandations outils (Reclaim, Google Calendar…)</li>
+        </ul>
+        <p class="note">Format : visio 1:1 · Paiement unique · <strong>3 créneaux ouverts avant le 31 octobre</strong>
+        </p>
+        <div class="btnrow">
+          <a class="btn" href="https://calendly.com/florian-marin/priority-stack-session-coaching" target="_blank"
+            rel="noopener" aria-label="Réserver maintenant la session Priority Stack, 200 euros">Réserver maintenant —
+            200 €</a>
+          <a class="btn btn--outline" href="https://www.linkedin.com/in/florian-marin/" target="_blank" rel="noopener"
+            aria-label="Poser une question par message privé">Poser une question</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- POURQUOI MOI -->
+    <section id="me">
+      <h2>👤 Pourquoi moi ?</h2>
+      <ul class="list">
+        <li>14 ans d'expérience en Software Engineering & Management (Teads)</li>
+        <li>Accompagnement de +30 leaders tech à structurer leur performance</li>
+        <li>Triathlète & père de deux enfants — j'incarne ce que j'enseigne</li>
       </ul>
-      <p>
-        <small
-          >⏱️ Astuce : 15' le vendredi pour préparer la semaine suivante.</small
-        >
-      </p>
+      <p><em>Je t'aide à concevoir <strong>ton</strong> système — pas à copier celui des autres.</em></p>
     </section>
 
-    <section id="resultats">
-      <h2>🎯 Résultats (4-6 semaines)</h2>
-      <ul class="resultats">
-        <li>
-          6-9 h de sport/semaine <strong>sans stress ni culpabilité</strong>
-        </li>
-        <li>Soirs disponibles pour la famille <strong>≥ 5/7</strong></li>
-        <li>
-          Conflits d'agenda <strong>rares</strong> (règles + auto-reschedule)
-        </li>
-        <li>Énergie durable : sommeil régulier, alimentation simplifiée</li>
-      </ul>
-
-      <!-- Mini-KPIs réutilisant le style des "chips" outils -->
-      <div class="tools" aria-label="Indicateurs de suivi">
-        <div class="tools-title">📈 3 KPI à suivre</div>
-        <div class="toolchips">
-          <span class="toolchip">Séances honorées ≥ 85%</span>
-          <span class="toolchip">Soirs en famille ≥ 5/7</span>
-          <span class="toolchip">Conflits d'agenda ≤ 1/sem</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="starter-kits" class="cta">
-      <div class="badge">⚙️ Démarrer en 2 clics</div>
-      <p>
-        Choisis un kit, importe le <strong>.ics</strong> (Europe/Paris) et
-        ajuste selon tes contraintes.
-      </p>
-
-      <details class="accordion">
-        <summary>🧩 Starter 4h - 3 midis + 1 matin (constance)</summary>
-        <ul>
-          <li>Mardi 12:15 - 45 min (intensité CAP/Nat)</li>
-          <li>Jeudi 12:15 - 45 min (technique Nat/CAP)</li>
-          <li>Samedi 07:30 - 1 h 30 (vélo)</li>
-          <li>Dimanche 08:00 - 1 h (endurance CAP)</li>
-        </ul>
-        <p>
-          <a href="starter-4h.ics" download>📅 Télécharger - Kit 4h (.ics)</a>
-        </p>
-      </details>
-
-      <details class="accordion">
-        <summary>🧩 Starter 6h - 3 midis + 2 week-end (progression)</summary>
-        <ul>
-          <li>Lun 12:15 - 1 h (vitesse/seuil CAP/Nat)</li>
-          <li>Mer 12:15 - 1 h (technique Nat)</li>
-          <li>Ven 12:15 - 1 h (force vélo HT)</li>
-          <li>Sam 07:30 - 2 h (vélo)</li>
-          <li>Dim 08:00 - 1 h (CAP endurance)</li>
-        </ul>
-        <p>
-          <a href="starter-6h.ics" download>📅 Télécharger - Kit 6h (.ics)</a>
-        </p>
-      </details>
-
-      <details class="accordion">
-        <summary>
-          🧩 Starter 9h - 4 midis + 2 week-end (volume maîtrisé)
-        </summary>
-        <ul>
-          <li>Lun 12:15 - 1 h (CAP rythme)</li>
-          <li>Mar 12:15 - 1 h (Nat technique + séries)</li>
-          <li>Jeu 12:15 - 1 h (vélo HT sweet spot)</li>
-          <li>Ven 12:15 - 1 h (Nat seuil)</li>
-          <li>Sam 07:30 - 3 h (vélo long)</li>
-          <li>Dim 08:00 - 2 h (CAP longue ou brick)</li>
-        </ul>
-        <p>
-          <a href="starter-9h.ics" download>📅 Télécharger - Kit 9h (.ics)</a>
-        </p>
-      </details>
-    </section>
-
+    <!-- PREUVES -->
     <section id="social-proof">
-      <h2>✨ Ça marche dans la vraie vie</h2>
-      <ul>
-        <li>
-          <strong>Manager (45' meeting-heavy)</strong> : 3 créneaux midi + 1
-          matin week-end → +20% constance en 6 semaines.
-        </li>
-        <li>
-          <strong>Parent de 2 enfants</strong> : "Batch Cooking" le dimanche →
-          soirs libres + meilleurs repas = meilleure récup.
-        </li>
-        <li>
-          <strong>Consultant</strong> :
-          <a href="https://reclaim.ai/" target="_blank" rel="noopener"
-            >Reclaim.ai</a
-          >
-          auto-reschedule → zéro séance annulée malgré déplacements.
-        </li>
-      </ul>
-    </section>
-
-    <section id="faq">
-      <h2>❓FAQ express</h2>
-      <p>
-        <strong>Et si une réunion tombe sur mon sport ?</strong> Reclaim recase
-        automatiquement le créneau le jour même.
-      </p>
-      <p>
-        <strong>Si mon agenda change chaque semaine ?</strong> Planifie 15' le
-        vendredi → ajuste S+1 (pro/perso) en une passe.
-      </p>
-      <p>
-        <strong>Je n'ai pas 9h ...</strong> Commence à 4-5h : même méthode,
-        mêmes effets (constance > volume).
-      </p>
-    </section>
-
-    <section id="cta" class="cta">
-      <div class="badge">📌 Et maintenant ?</div>
-      <p>
-        <strong>Coaching 1:1</strong> pour adapter la méthode à ton agenda, car
-        il est unique.
-      </p>
-
-      <p class="price-line">
-        <strong>200€</strong> <span class="muted">/ 60 min</span>
-      </p>
-
-      <div class="btn-row">
-        <a
-          class="btn"
-          href="https://calendly.com/priority-stack/priority-stack-session-coaching"
-          target="_blank"
-          rel="noopener"
-          >Réserver un créneau</a
-        >
-        <a
-          class="btn btn-outline"
-          href="https://www.linkedin.com/in/florian-marin/"
-          target="_blank"
-          rel="noopener"
-          >M'écrire en DM</a
-        >
-      </div>
-    </section>
-
-    <section id="deliverables">
-      <div class="badge">🎁 Livrables - 60 min de coaching</div>
-      <div class="callout">
-        <div class="icon">🧾</div>
-        <div>
-          <ul>
-            <li>
-              Définition de tes <strong>objectifs</strong> et de tes
-              <strong>priorités</strong>
-            </li>
-            <li>
-              <strong>Cartographie</strong> de ton agenda (pro / perso /
-              famille)
-            </li>
-            <li><strong>Agenda partagé</strong> avec ton/ta conjoint(e)</li>
-            <li>Créneaux <strong>"Sport"</strong> bloqués (non négociables)</li>
-          </ul>
+      <h2>💬 Exemples concrets</h2>
+      <div class="grid">
+        <div class="card">
+          <strong>Marc, 43 ans — dirigeant tech</strong>
+          <p>Avant : 55h/semaine, sport abandonné. Après 3 semaines : <strong>+4h de sport</strong> / semaine et
+            <strong>2 soirs libres</strong>. Clarté retrouvée.
+          </p>
+        </div>
+        <div class="card">
+          <strong>Julie, 39 ans — manager & triathlète</strong>
+          <p>Régularité sportive sans empiéter sur la famille. Agenda stabilisé, énergie constante.</p>
         </div>
       </div>
     </section>
 
-    <footer>
-      🧡 Performer sans sacrifier l'essentiel - <strong>Florian MARIN</strong>
-    </footer>
-  </body>
+    <!-- RÉSUMÉ -->
+    <section id="summary">
+      <h2>🧭 En 60 minutes, tu repars avec</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Diagnostic</th>
+            <th>Plan</th>
+            <th>Livrable</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cartographie claire de ton système</td>
+            <td>Clarté · Discipline · Énergie (personnalisé)</td>
+            <td>Feuille de route Notion + recommandations outils</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="btnrow">
+        <a class="btn" href="https://calendly.com/florian-marin/priority-stack-session-coaching" target="_blank"
+          rel="noopener" aria-label="Réserver la session Priority Stack, 200 euros">Réserver la session — 200 €</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2>❓ FAQ rapide</h2>
+      <p><strong>Et si je manque de temps ?</strong><br />Justement. On libère du temps dès la première semaine.</p>
+      <p><strong>Faut-il être triathlète ?</strong><br />Non. La méthode s'adresse à tous les dirigeants sportifs, quel
+        que soit le niveau.</p>
+      <p><strong>Après la session ?</strong><br />Tu appliques immédiatement. Possibilité d'un pack 3 séances (600 €)
+        pour une mise en place complète.</p>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="about">
+      <h2>⚡ À propos</h2>
+      <p><strong>Florian Marin</strong> — Ingénieur, manager, triathlète et père de famille. J'aide les dirigeants
+        sportifs à concevoir des systèmes de performance durables — humains, efficaces et clairs.</p>
+    </section>
+  </div>
+
+  <!-- Sticky CTA -->
+  <div class="sticky">
+    <div class="wrap">
+      <small>Session Priority Stack™ — 60 min, 200 € · 3 créneaux avant le 31 octobre</small>
+      <a class="btn" href="https://calendly.com/florian-marin/priority-stack-session-coaching" target="_blank"
+        rel="noopener" aria-label="Réserver maintenant la session Priority Stack, 200 euros">Réserver maintenant</a>
+    </div>
+  </div>
+
+</body>
+
 </html>
