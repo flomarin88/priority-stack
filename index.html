@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Priority Stack™ — Session 60 min (200 €) | Florian Marin</title>
+  <title>Priority Stack™ — Phase pilote | Florian Marin</title>
   <meta name="description"
-    content="Systèmes de performance pour dirigeants sportifs. Session Priority Stack™ : 60 min pour reprendre le contrôle de ton temps, de ton énergie et de ta performance — sans sacrifier l'essentiel." />
+    content="Priority Stack™ — un cadre de performance durable co-construit avec des dirigeants sportifs. Rejoins la phase pilote pour concilier sport, carrière et famille sans t'épuiser." />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:site_name" content="Florian Marin" />
   <meta property="og:url" content="https://stack.florianmarin.me" />
-  <meta property="og:title" content="Priority Stack™ — Session 60 min (200 €) | Florian Marin" />
+  <meta property="og:title" content="Priority Stack™ — Phase pilote | Florian Marin" />
   <meta property="og:description"
-    content="Reprends le contrôle de ton temps, de ton énergie et de ta performance. Session 1:1 — 60 min, 200 €. 3 créneaux avant le 31 octobre." />
+    content="Construire des systèmes de performance durables avec des dirigeants sportifs. Échangeons sur ton organisation — Priority Stack™ en phase pilote." />
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image" content="/og/priority-stack-1200x630.png" />
@@ -26,19 +26,12 @@
 
   <style>
     :root {
-      /* Fond principal */
       --bg: #0A0A0A;
-      /* Texte principal */
       --text: #F5F5F5;
-      /* Texte secondaire */
       --muted: #CCCCCC;
-      /* Or Priority (autorité) */
       --accent: #D4AF37;
-      /* Orange (action) */
       --cta: #FF6B00;
-      /* Cartes / blocs */
       --surface: #2B2B2B;
-      /* Bordures subtiles */
       --border: #1C1C1C;
       --radius: 16px;
       --w: 860px;
@@ -55,12 +48,12 @@
       font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Inter, Roboto, Helvetica, Arial;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      padding: 0 18px 88px;
+      padding: 0 18px 88px
     }
 
     .wrap {
       max-width: var(--w);
-      margin: 0 auto;
+      margin: 0 auto
     }
 
     h1,
@@ -82,7 +75,6 @@
       margin-top: 28px
     }
 
-    /* Tweak #1: h3 en or (pas d'orange hors CTA) */
     h3 {
       color: var(--accent);
       font-size: clamp(16px, 2.1vw, 20px)
@@ -106,19 +98,18 @@
       color: var(--accent)
     }
 
-    /* Hero */
     header.hero {
       margin: 22px 0 26px;
       padding: 28px 22px;
       border-radius: 22px;
       background: linear-gradient(135deg, #0C0C0C 0%, #121212 55%, #171717 100%);
       border: 1px solid var(--border);
-      text-align: center;
+      text-align: center
     }
 
     .tagline {
       font-weight: 800;
-      font-size: clamp(28px, 4.2vw, 46px);
+      font-size: clamp(28px, 4.2vw, 46px)
     }
 
     .sub {
@@ -128,7 +119,6 @@
       margin: 8px auto 0
     }
 
-    /* CTA */
     .btnrow {
       display: flex;
       gap: 10px;
@@ -148,7 +138,7 @@
       background: var(--cta);
       border: 2px solid var(--cta);
       color: #000;
-      transition: .25s;
+      transition: .25s
     }
 
     .btn:hover {
@@ -160,7 +150,7 @@
     .btn--outline {
       background: transparent;
       border: 2px solid var(--cta);
-      color: var(--text);
+      color: var(--text)
     }
 
     .btn--outline:hover {
@@ -168,15 +158,13 @@
       color: #000
     }
 
-    /* Tweak #2: focus visible (accessibilité) */
     .btn:focus-visible,
     a:focus-visible {
       outline: 3px solid var(--accent);
       outline-offset: 3px;
-      border-radius: 10px;
+      border-radius: 10px
     }
 
-    /* Cards / grids */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -205,7 +193,6 @@
       margin-top: 8px
     }
 
-    /* Tweak #3: meilleure lisibilité des chips */
     .chip {
       background: #1A1A1A;
       border: 1px solid var(--border);
@@ -216,7 +203,6 @@
       color: #E6E6E6
     }
 
-    /* Table résumé */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -234,7 +220,6 @@
       background: #141414
     }
 
-    /* Sections */
     section {
       margin: 26px 0
     }
@@ -242,10 +227,9 @@
     .note,
     .muted,
     small {
-      color: var(--muted);
+      color: var(--muted)
     }
 
-    /* Sticky footer CTA */
     .sticky {
       position: fixed;
       left: 0;
@@ -254,7 +238,7 @@
       backdrop-filter: blur(8px);
       background: rgba(10, 10, 10, .9);
       border-top: 1px solid var(--surface);
-      z-index: 20;
+      z-index: 20
     }
 
     .sticky .wrap {
@@ -266,11 +250,6 @@
       padding: 10px 18px
     }
 
-    .sticky small {
-      color: var(--muted)
-    }
-
-    /* Mobile */
     @media (max-width:860px) {
       .grid-3 {
         grid-template-columns: 1fr
@@ -283,19 +262,6 @@
   </style>
 
   <script defer data-domain="stack.florianmarin.me" src="https://plausible.io/js/script.js"></script>
-
-  <!-- SEO Product schema -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Product",
-    "name":"Session Priority Stack™",
-    "brand":{"@type":"Brand","name":"Florian Marin"},
-    "description":"Session 1:1 de 60 minutes pour concevoir un système de performance durable (Clarté, Discipline, Énergie) destiné aux dirigeants sportifs.",
-    "audience":{"@type":"Audience","audienceType":"Dirigeants sportifs / managers"},
-    "offers":{"@type":"Offer","price":"200","priceCurrency":"EUR","availability":"https://schema.org/InStock"}
-  }
-  </script>
 </head>
 
 <body>
@@ -303,14 +269,15 @@
     <!-- HERO -->
     <header class="hero" id="hero">
       <div class="tagline">Performer sans sacrifier <span class="accent">l'essentiel</span></div>
-      <p class="sub">Systèmes de performance pour dirigeants sportifs — reprendre le contrôle de ton temps, de ton
-        énergie et de ta performance.</p>
+      <p class="sub">Priority Stack™ — <strong>phase pilote en cours</strong>. Nous co-construisons, avec des dirigeants
+        sportifs,
+        des <em>systèmes de performance durables</em> pour concilier sport, carrière et famille sans s'épuiser.</p>
       <div class="btnrow">
-        <a class="btn" href="https://calendly.com/florian-marin/priority-stack-session-coaching" target="_blank"
-          rel="noopener" aria-label="Réserver la session Priority Stack, 200 euros">Réserver la session Priority Stack™
-          — 200 €</a>
-        <a class="btn btn--outline" href="https://www.linkedin.com/in/florian-marin/" target="_blank" rel="noopener"
-          aria-label="Me contacter sur LinkedIn en message privé">Me contacter en DM</a>
+        <a class="btn" href="https://www.linkedin.com/in/florian-marin/" target="_blank" rel="noopener"
+          aria-label="Échanger avec Florian sur LinkedIn">Échanger sur LinkedIn</a>
+        <a class="btn btn--outline"
+          href="mailto:contact@florianmarin.me?subject=Priority%20Stack%20%E2%80%94%20Phase%20pilote"
+          aria-label="Recevoir les informations sur la phase pilote par email">Recevoir les infos pilote</a>
       </div>
     </header>
 
@@ -322,10 +289,10 @@
       <p><strong>Le problème, ce n'est pas la volonté. C'est l'absence de système.</strong></p>
     </section>
 
-    <!-- SOLUTION -->
+    <!-- MÉTHODE -->
     <section id="solution">
-      <h2>⚙️ La solution : Priority Stack™</h2>
-      <p>Une méthode concrète, inspirée du management tech et du sport d'endurance. Trois piliers pour remettre tes
+      <h2>⚙️ La méthode Priority Stack™</h2>
+      <p>Un cadre concret, inspiré du management tech et du sport d'endurance. Trois piliers pour remettre tes
         vraies priorités au centre :</p>
       <div class="grid grid-3">
         <div class="card">
@@ -340,8 +307,8 @@
         <div class="card">
           <h3>2️⃣ Discipline Sacrée</h3>
           <ul class="list">
-            <li>Entraînements & récupération verrouillés (non négociables)</li>
-            <li>Plan B automatique quand la réalité bouge</li>
+            <li>Entraînements & récupération protégés (non négociables)</li>
+            <li>Plan B intelligent quand la réalité bouge</li>
           </ul>
           <div class="kpis"><span class="chip">Régularité ≥ 85%</span><span class="chip">Zéro culpabilité</span></div>
         </div>
@@ -356,28 +323,25 @@
       </div>
     </section>
 
-    <!-- OFFRE -->
-    <section id="offer">
-      <h2>🎯 L'offre : Session Priority Stack™</h2>
+    <!-- PHASE PILOTE -->
+    <section id="pilot">
+      <h2>🚀 Phase pilote Priority Stack™</h2>
       <div class="card">
-        <p><strong>Session individuelle — 60 minutes — 200 €</strong></p>
-        <p>En 1h, on conçoit ensemble ton système de performance durable. Tu repars avec un <strong>plan clair</strong>,
-          une <strong>carte d'agenda personnalisée</strong> et les <strong>outils concrets</strong> pour l'appliquer dès
-          la semaine suivante.</p>
+        <p>Je lance actuellement la <strong>phase pilote</strong> de Priority Stack™ avec quelques dirigeants sportifs.
+          L'objectif : valider le cadre sur le terrain, affiner les rituels et outillages,
+          et co-concevoir des systèmes qui résistent à la vraie vie.</p>
         <ul class="list">
-          <li>Diagnostic complet de ton agenda actuel</li>
-          <li>Plan personnalisé : Clarté · Discipline · Énergie</li>
-          <li>Livrable : feuille de route Notion + recommandations outils (Reclaim, Google Calendar, Garmin, Polar, ...)
-          </li>
+          <li>Échange individuel pour cartographier ton système (Clarté · Discipline · Énergie)</li>
+          <li>Plan d'action concret pour la semaine suivante</li>
+          <li>Suivi court et itérations basées sur tes retours</li>
         </ul>
-        <p class="note">Format : visio 1:1 · Paiement unique · <strong>3 créneaux ouverts avant le 31 octobre</strong>
-        </p>
+        <p class="note">Tu veux participer ou simplement en discuter ? Contacte-moi ci-dessous.</p>
         <div class="btnrow">
-          <a class="btn" href="https://calendly.com/florian-marin/priority-stack-session-coaching" target="_blank"
-            rel="noopener" aria-label="Réserver maintenant la session Priority Stack, 200 euros">Réserver maintenant —
-            200 €</a>
-          <a class="btn btn--outline" href="https://www.linkedin.com/in/florian-marin/" target="_blank" rel="noopener"
-            aria-label="Poser une question par message privé">Poser une question</a>
+          <a class="btn" href="https://www.linkedin.com/in/florian-marin/" target="_blank" rel="noopener">Discuter sur
+            LinkedIn</a>
+          <a class="btn btn--outline"
+            href="mailto:contact@florianmarin.me?subject=Infos%20Phase%20pilote%20Priority%20Stack">Recevoir les
+            infos</a>
         </div>
       </div>
     </section>
@@ -387,35 +351,36 @@
       <h2>👤 Pourquoi moi ?</h2>
       <ul class="list">
         <li>14 ans d'expérience en Software Engineering & Management</li>
-        <li>Accompagnement de +50 leaders tech / product à structurer leur performance</li>
+        <li>Accompagnement de +50 leaders tech / product</li>
         <li>Triathlète & père de deux enfants — j'incarne ce que j'enseigne</li>
       </ul>
       <p><em>Je t'aide à concevoir <strong>ton</strong> système — pas à copier celui des autres.</em></p>
     </section>
 
-    <!-- PREUVES -->
+    <!-- EXEMPLES / PREUVES -->
     <section id="social-proof">
       <h2>💬 Exemples concrets</h2>
       <div class="grid">
         <div class="card">
-          <strong>Marc, 43 ans — dirigeant tech</strong>
-          <p>Avant : 55h/semaine, sport abandonné. Après 3 semaines : <strong>+4h de sport</strong> / semaine et
+          <strong>Dirigeant tech — 43 ans</strong>
+          <p>Avant : 55h/semaine, sport abandonné. Après 3 semaines d'ajustements : <strong>+4h de
+              sport</strong>/semaine et
             <strong>2 soirs libres</strong>. Clarté retrouvée.
           </p>
         </div>
         <div class="card">
-          <strong>Audrey, 32 ans — Associée d'un cabinet de kinésithérapie (5 kinés), 2 enfants</strong>
-          <p>Avant : frustrée de ne jamais "prendre du temps pour elle", malgré toute la motivation du monde.</p>
-          <p>Après 1 session Priority Stack™ : <strong>+4h par semaine</strong> pour elle, sans impacter ni sa famille
-            ni son travail.</p>
-          <p>Tennis le lundi soir, salle le jeudi midi, jardin le week-end. Équilibre retrouvé, énergie durable.</p>
+          <strong>Associée d'un cabinet — 32 ans, 2 enfants</strong>
+          <p>Avant : culpabilité et “tetris” permanent. Après 1 session : <strong>+4h pour elle</strong> sans impacter
+            ni la
+            famille ni le travail. Constance et énergie.</p>
         </div>
       </div>
+      <p class="note">Exemples issus d'accompagnements et retours tests. Résultats variables selon le contexte.</p>
     </section>
 
     <!-- RÉSUMÉ -->
     <section id="summary">
-      <h2>🧭 En 60 minutes, tu repars avec</h2>
+      <h2>🧭 Ce que tu obtiens en participant</h2>
       <table>
         <thead>
           <tr>
@@ -428,40 +393,45 @@
           <tr>
             <td>Cartographie claire de ton système</td>
             <td>Clarté · Discipline · Énergie (personnalisé)</td>
-            <td>Feuille de route Notion + recommandations outils</td>
+            <td>Feuille de route + recommandations outils (Reclaim, Google Calendar, Garmin, …)</td>
           </tr>
         </tbody>
       </table>
       <div class="btnrow">
-        <a class="btn" href="https://calendly.com/florian-marin/priority-stack-session-coaching" target="_blank"
-          rel="noopener" aria-label="Réserver la session Priority Stack, 200 euros">Réserver la session — 200 €</a>
+        <a class="btn" href="https://www.linkedin.com/in/florian-marin/" target="_blank" rel="noopener">Échanger
+          maintenant</a>
+        <a class="btn btn--outline"
+          href="mailto:contact@florianmarin.me?subject=Priority%20Stack%20%E2%80%94%20Phase%20pilote">Recevoir les
+          infos</a>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ (light, sans prix) -->
     <section id="faq">
       <h2>❓ FAQ rapide</h2>
-      <p><strong>Et si je manque de temps ?</strong><br />Justement. On libère du temps dès la première semaine.</p>
       <p><strong>Faut-il être triathlète ?</strong><br />Non. La méthode s'adresse à tous les dirigeants sportifs, quel
         que soit le niveau.</p>
-      <p><strong>Après la session ?</strong><br />Tu appliques immédiatement. Possibilité d'un pack 3 séances (600 €)
-        pour une mise en place complète.</p>
+      <p><strong>Combien de temps faut-il prévoir ?</strong><br />Une session d'échange et quelques ajustements la
+        semaine suivante suffisent pour les premiers résultats.</p>
+      <p><strong>Et après ?</strong><br />On itère selon tes retours — l'objectif est de bâtir un système durable qui
+        colle à ta réalité.</p>
     </section>
 
     <!-- À PROPOS -->
     <section id="about">
       <h2>⚡ À propos</h2>
-      <p><strong>Florian Marin</strong> — Ingénieur, manager, triathlète et père de famille. J'aide les dirigeants
-        sportifs à concevoir des systèmes de performance durables — humains, efficaces et clairs.</p>
+      <p><strong>Florian Marin</strong> — Ingénieur, manager, triathlète et père de famille. Je construis avec des
+        dirigeants
+        sportifs des systèmes de performance durables — humains, efficaces et clairs.</p>
     </section>
   </div>
 
-  <!-- Sticky CTA -->
+  <!-- Sticky CTA (conversation, pas réservation) -->
   <div class="sticky" data-placement="sticky">
     <div class="wrap">
-      <small>Session Priority Stack™ — 60 min, 200 € · 3 créneaux avant le 31 octobre</small>
-      <a class="btn" href="https://calendly.com/florian-marin/priority-stack-session-coaching" target="_blank"
-        rel="noopener" aria-label="Réserver maintenant la session Priority Stack, 200 euros">Réserver maintenant</a>
+      <small>Priority Stack™ — Phase pilote en cours · Construisons un système qui te ressemble</small>
+      <a class="btn" href="https://www.linkedin.com/in/florian-marin/" target="_blank" rel="noopener"
+        aria-label="Échanger avec Florian sur LinkedIn">Échanger sur LinkedIn</a>
     </div>
   </div>
 
@@ -469,60 +439,29 @@
     document.addEventListener('DOMContentLoaded', function () {
       const getPlacement = (el) => {
         const explicit = el.closest('[data-placement]');
-        if (explicit && explicit.getAttribute('data-placement')) {
-          return explicit.getAttribute('data-placement');
-        }
-        // Sinon on remonte à la section parente
-        const section = el.closest('section');
-        if (section && section.id) return section.id;
-        // Dernier recours : id du parent direct, si présent
-        const parentWithId = el.closest('[id]');
-        if (parentWithId) return parentWithId.id;
+        if (explicit && explicit.getAttribute('data-placement')) return explicit.getAttribute('data-placement');
+        const section = el.closest('section'); if (section && section.id) return section.id;
+        const parentWithId = el.closest('[id]'); if (parentWithId) return parentWithId.id;
         return 'unknown';
       };
+      const track = (name, props = {}) => { if (window.plausible) window.plausible(name, { props }); };
+      const on = (selector, type, handler) => { document.querySelectorAll(selector).forEach(el => el.addEventListener(type, handler, { passive: true })); };
 
-      const track = (name, props = {}) => {
-        if (window.plausible) window.plausible(name, { props });
-      };
-
-      const on = (selector, type, handler) => {
-        document.querySelectorAll(selector).forEach(el => {
-          el.addEventListener(type, handler, { passive: true });
-        });
-      };
-
-      on('a[href*="calendly.com"]', 'click', (e) => {
-        const placement = getPlacement(e.currentTarget)
-        track('CTA • Réserver Session', { placement })
-      });
-
-      on('a[href*="linkedin.com/in/florian-marin"]', 'click', (e) => {
-        const placement = getPlacement(e.currentTarget)
-        track('CTA • DM LinkedIn', { placement })
-      });
+      on('a[href*="linkedin.com/in/florian-marin"]', 'click', (e) => track('CTA • DM LinkedIn', { placement: getPlacement(e.currentTarget) }));
+      on('a[href^="mailto:"]', 'click', (e) => track('CTA • Email', { placement: getPlacement(e.currentTarget) }));
 
       const seen = {};
       const watch = (id, name) => {
         const el = document.getElementById(id);
         if (!el || !('IntersectionObserver' in window)) return;
         const io = new IntersectionObserver((entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting && !seen[name]) {
-              track(name);
-              seen[name] = true;
-            }
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !seen[name]) { track(name); seen[name] = true; }
           });
         }, { threshold: 0.3 });
         io.observe(el);
       };
-
-      // Tes IDs existent bien dans la page (offer, me, social-proof, summary, faq, about)
-      watch('offer', 'SCROLL • Offer');
-      watch('me', 'SCROLL • Me');
-      watch('social-proof', 'SCROLL • Social Proof');
-      watch('summary', 'SCROLL • Summary');
-      watch('faq', 'SCROLL • FAQ');
-      watch('about', 'SCROLL • About');
+      ['pilot', 'me', 'social-proof', 'summary', 'faq', 'about'].forEach(id => watch(id, 'SCROLL • ' + id));
     });
   </script>
 </body>
